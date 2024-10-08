@@ -18,7 +18,7 @@ app.get('/api/quotes/random', (req,res) => {
 app.get('/api/quotes',(req,res) => {
     const { person } = req.query;
 
-    const filteredQuotes = person ? quotes.filter(quote => quote.author === person)
+    const filteredQuotes = person ? quotes.filter(quote => quote.person === person)
          : quotes;
          res.send({quotes: filteredQuotes});
 });
@@ -29,7 +29,7 @@ app.post("/api/quotes", (req, res) => {
   
     !quote || !person
       ? res.status(400).send()
-      : (quotes.push(newQuote).status(201).json());
+      : (quotes.push(newQuote), res.status(201).send(newQuote));
   });
 
   app.listen (PORT, () => {
