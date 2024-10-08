@@ -29,8 +29,8 @@ app.post("/api/quotes", (req, res) => {
   
     !quote || !person
       ? res.status(400).send()
-      : (quotes.push(newQuote), res.status(201).send(newQuote));
-  });
+      : (quotes.push(newQuote), res.status(201).send(newQuote)
+   )});
 
   app.listen (PORT, () => {
     console.log(`server is listening on http://localhost:${PORT}`)
